@@ -1,0 +1,5 @@
+stress-ng: info:  [8744] dispatching hogs: 1 hdd
+stress-ng: info:  [8744] successful run completed in 9.86s
+stress-ng: info:  [8744] stressor      bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+stress-ng: info:  [8744]                          (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: info:  [8744] hdd              32768      9.86      0.00      0.88      3323.49     37236.36
