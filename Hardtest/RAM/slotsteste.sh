@@ -3,10 +3,10 @@ DIRET="/usr/share/Hardtest"
 DIALOG="--backtitle "Hardtest" --ok-label "Selecionar" --exit-label "Sair" --cancel-label "Cancelar""
 clear
 pulalinha(){ echo ; }
-dialog \
---stdout \
-$DIALOG\
---title 'Status' \
+dialog                          \
+--stdout                        \
+$DIALOG                         \
+--title 'Status'                \
 --infobox '\nFazendo Testes...' \
 0 0 
 
@@ -83,9 +83,9 @@ echo "A quantidade de memoria é $SIZE7 MB "
 }
 novotexto=$(texto | sed '/(Not Found)/d')
 echo "$novotexto" > "$DIRET/RAM/.texto.txt"
-dialog \
-	$DIALOG\
-	--title 'slots' \
+dialog                              \
+	$DIALOG                           \
+	--title 'slots'                   \
 	--textbox "$DIRET/RAM/.texto.txt" \
 0 0
 . "$DIRET/RAM/menuprojeto.sh"
