@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROGRAMAS="dialog stress-ng speedtest-cli dmidecode sysbench"
+PROGRAMAS="dialog stress-ng speedtest-cli dmidecode sysbench hdparm"
 
 lugarcerto(){
 	cp -R ./Hardtest /usr/share

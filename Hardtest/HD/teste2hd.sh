@@ -15,6 +15,8 @@ textoB(){
 echo "despachando hogs: $dh"
 echo "Execução completada em $sc"
 echo "Num. de Interações tempo $bogo  tempo usr  tempo de sistema   núm. de int/seg   núm. de int/seg"
+echo "info:                 (segs) (segs) (segs) (tempo real) (usr+temp sist)"
+echo "info: hdd    $a     $b  $c   $d    $e       $f" 
 }
 stress(){
 dialog --stdout $DIALOG --title "Aguarde" --infobox "\nFazendo Testes...\n" 0 0
@@ -23,6 +25,12 @@ dh=$(cat $STAGE | grep "dispatching hogs:" | cut -d" " -f7-8)
 sc=$(cat $STAGE | grep "successful run" | cut -d" " -f9)
 bogo=$(cat $STAGE | grep "stressor" | cut -d" " -f13)
 sec=$(cat $STAGE | grep ""| cut -d" " -f40)
+a=$(cat $STAGE | grep "hdd      " | cut -d" " -f19)
+b=$(cat $STAGE | grep "hdd      " | cut -d" " -f24)
+c=$(cat $STAGE | grep "hdd      " | cut -d" " -f30)
+d=$(cat $STAGE | grep "hdd      " | cut -d" " -f36)
+e=$(cat $STAGE | grep "hdd      " | cut -d" " -f42)
+f=$(cat $STAGE | grep "hdd      " | cut -d" " -f47)
 textoB > "$STAGE"
 dialog --stdout $DIALOG --title "Stress" --textbox "$STAGE" 0 0
 [[ $? == 0 ]] && break || exit 0
