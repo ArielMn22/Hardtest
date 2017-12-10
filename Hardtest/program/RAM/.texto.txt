@@ -1,0 +1,3 @@
+Slots de memoria: 
+Capacidade maxima de RAM:  GB
+O padrão de memoria da sua maquina é: 

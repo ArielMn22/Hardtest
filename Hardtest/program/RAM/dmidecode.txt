@@ -1,0 +1,97 @@
+# dmidecode 3.0
+Getting SMBIOS data from sysfs.
+SMBIOS 2.7 present.
+
+Handle 0x0022, DMI type 16, 23 bytes
+Physical Memory Array
+	Location: System Board Or Motherboard
+	Use: System Memory
+	Error Correction Type: None
+	Maximum Capacity: 32 GB
+	Error Information Handle: Not Provided
+	Number Of Devices: 4
+
+Handle 0x0024, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x0022
+	Error Information Handle: Not Provided
+	Total Width: 64 bits
+	Data Width: 64 bits
+	Size: 4096 MB
+	Form Factor: DIMM
+	Set: None
+	Locator: ChannelA-DIMM0
+	Bank Locator: BANK 0
+	Type: DDR3
+	Type Detail: Synchronous
+	Speed: 1333 MHz
+	Manufacturer: 0194
+	Serial Number: 00B32795
+	Asset Tag: 9876543210
+	Part Number: SH564128FH8N0QHSCR
+	Rank: 2
+	Configured Clock Speed: 1333 MHz
+
+Handle 0x0026, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x0022
+	Error Information Handle: Not Provided
+	Total Width: 64 bits
+	Data Width: 64 bits
+	Size: 4096 MB
+	Form Factor: DIMM
+	Set: None
+	Locator: ChannelA-DIMM1
+	Bank Locator: BANK 1
+	Type: DDR3
+	Type Detail: Synchronous
+	Speed: 1333 MHz
+	Manufacturer: 0194
+	Serial Number: 00B31A45
+	Asset Tag: 9876543210
+	Part Number: SH564128FH8N0QHSCR
+	Rank: 2
+	Configured Clock Speed: 1333 MHz
+
+Handle 0x0028, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x0022
+	Error Information Handle: Not Provided
+	Total Width: 64 bits
+	Data Width: 64 bits
+	Size: 4096 MB
+	Form Factor: DIMM
+	Set: None
+	Locator: ChannelB-DIMM0
+	Bank Locator: BANK 2
+	Type: DDR3
+	Type Detail: Synchronous
+	Speed: 1333 MHz
+	Manufacturer: 0194
+	Serial Number: 00B31B0B
+	Asset Tag: 9876543210
+	Part Number: SH564128FH8N0QHSCR
+	Rank: 2
+	Configured Clock Speed: 1333 MHz
+
+Handle 0x002A, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x0022
+	Error Information Handle: Not Provided
+	Total Width: 64 bits
+	Data Width: 64 bits
+	Size: 4096 MB
+	Form Factor: DIMM
+	Set: None
+	Locator: ChannelB-DIMM1
+	Bank Locator: BANK 3
+	Type: DDR3
+	Type Detail: Synchronous
+	Speed: 1333 MHz
+	Manufacturer: 0194
+	Serial Number: 00B31AE3
+	Asset Tag: 9876543210
+	Part Number: SH564128FH8N0QHSCR
+	Rank: 2
+	Configured Clock Speed: 1333 MHz
+

@@ -1,0 +1,6 @@
+<<<<<<< HEAD
+
+/dev/sda:
+ Timing buffered disk reads: 552 MB in  3.02 seconds = 182.99 MB/sec
+=======
+>>>>>>> d7e903a4195a64069e59ad10b998308c780e5014

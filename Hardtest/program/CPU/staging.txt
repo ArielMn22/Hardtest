@@ -1,0 +1,3 @@
+Tempo total de execução: 3.7602s
+Número de threads utilizados: 8
+Número primo máximo checado no teste de CPU: 20000
