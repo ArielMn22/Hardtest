@@ -115,7 +115,6 @@ logando(){
 				[[ $(grep "^$USERU:" $DIRET/.DATA/.usuario.txt) ]] && [[ $SENHAB == $PASSWORD ]] && X="dependente" && break 3 || erro && logando
 
 		done
-
 case $X in
 	"admin")
 		TIPOA=$(cat "/var/www/html/cgi-bin/usuario.txt" | grep "^$USERU:" | cut -d":" -f3)
