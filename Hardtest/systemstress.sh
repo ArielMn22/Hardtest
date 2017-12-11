@@ -22,7 +22,7 @@ removeu(){
   chmod 773 $USERDIRET/usuario.txt
 
   if [[ $? == 0 ]]; then
-    echo ;echo "Usuário $DELETEUSER removido com sucesso!"
+    echo ;echo "Usuário "$DELETEUSER" removido com sucesso!"
     exit 0
   else
     erro
@@ -46,8 +46,8 @@ removeuser(){
   dados
   
   DELETESENHA=$(echo $DELETESENHA | sha256sum | cut -d" " -f1)
-  SENHACERTA=$(grep ^$DELETEUSER: $USERDIRET/usuario.txt | cut -d":" -f2)
-  
+  SENHACERTA=$(grep "^$DELETEUSER:" $USERDIRET/usuario.txt | cut -d":" -f2)
+ 	echo $DELETEUSER 
   [[ $(grep "^$DELETEUSER:" $USERDIRET/usuario.txt) ]] && [[ $SENHACERTA == $DELETESENHA ]] && removeu || erroremove && removeuser 
 }
 

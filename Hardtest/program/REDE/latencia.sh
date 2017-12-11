@@ -40,7 +40,7 @@ dialog                   \
 --stdout                \
 $DIALOG								\
 --title "Rede"        \
---msgbox "Latência the new york time(USA) : $resultado ms ; Latência uol : $resultado2" \
+--msgbox "Latência the new york time(USA) : $resultado ms ; Latência uol : $resultado2 ms" \
 6 70 
 VAL=$?
 [[ $VAL == 1 ]] && source $DIRET/REDE/rede.sh
