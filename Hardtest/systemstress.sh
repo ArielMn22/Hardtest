@@ -1,9 +1,52 @@
 #!/bin/bash
 DIRET="/usr/share/Hardtest/program"
 DIALOG="--backtitle "Hardtest" --ok-label "Selecionar" --exit-label "Sair" --cancel-label "Cancelar""
+USERDIRET="/usr/lib/cgi-bin"
 chamada(){
 SENHA=$(grep ^$USERU: "/var/www/html/cgi-bin/usuario.txt" | cut -d":" -f2)
 SENHAB=$(grep -R ^$USERU: $DIRET/.DATA/.usuario*.txt | cut -d":" -f2)
+}
+
+erroremove(){ echo; read -s -p "Ocorreu um erro, tente novamente." ; }
+
+removeu(){
+  
+  cat $USERDIRET/usuario.txt | sed "/^$DELETEUSER:/d" > $USERDIRET/novo.txt
+  
+  rm -rf $USERDIRET/usuario.txt
+  mv $USERDIRET/novo.txt $USERDIRET/usuario.txt
+  
+  chown www-data:www-data $USERDIRET/usuario.txt
+  chmod 773 $USERDIRET/usuario.txt
+
+  if [[ $? == 0 ]]; then
+    echo ;echo "Usuário $DELETEUSER removido com sucesso!"
+    exit 0
+  else
+    erro
+    removeuser
+  fi  
+
+}
+removeuser(){
+  clear
+  echo "Estes são os usuários ADMINISTRADORES cadastrados no programa:"
+  echo
+	cat $USERDIRET/usuario.txt
+	echo
+  
+  dados(){
+    read -p "Qual dos usuário acima deseja remover? " DELETEUSER
+    read -s -p "Qual a senha do usuário $DELETEUSER? " DELETESENHA
+    [[ -z $DELETEUSER ]] && dados
+    [[ -z $DELETESENHA ]] && dados
+  }
+  dados
+  
+  DELETESENHA=$(echo $DELETESENHA | sha256sum | cut -d" " -f1)
+  SENHACERTA=$(grep ^$DELETEUSER: $USERDIRET/usuario.txt | cut -d":" -f2)
+  
+  [[ "grep ^$DELETEUSER: $USERDIRET/usuario.txt" ]] && [[ $SENHACERTA == $DELETESENHA ]] && removeu || erroremove && removeuser 
 }
 
 instalacao(){
@@ -97,7 +140,7 @@ while : ; do
 
 done
 
-[[ $1 == "-r" ]] && > "/usr/lib/cgi-bin/usuario.txt"
+[[ $1 == "-d" ]] && removeuser
 
 checkdesenha
 logando

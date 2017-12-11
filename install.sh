@@ -87,6 +87,13 @@ permissao(){
 				;;
    esac
 }
+
+while : ; do
+
+	[[ $USER == root ]] && break || echo "Você deve estar logado como root para instalar a ferramenta Hardtest." ; echo && exit 0
+
+done
+
 permissao
 lugarcerto
 html
