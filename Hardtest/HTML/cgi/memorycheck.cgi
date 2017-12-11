@@ -39,7 +39,6 @@ teste(){
 	sudo memtester $free 2 > $STAGE
 	val=$?
 	echo "<h3>Teste de Memória</h3>"
-	echo "<pre>$(cat $STAGE)</pre>"
 
 	case $val in
 		0) 
