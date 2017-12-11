@@ -45,7 +45,7 @@ teste(){
 		0) 
 			echo "<p>Sua memória está OK!</p>" ;;
 		x01) 
-			echo "<p>Ocorreu um erro durante a alocação ou fechamento da memória, ou erro de invocação.</p>" ;;
+			echo "<p>Ocorreu um erro durante a alocação da memória.</p>" ;;
 		x02)
 			echo "<p>Ocorreu um erro durante o teste de "stuck adress" (endereço emperrado).</p>" ;;
 		x04)
