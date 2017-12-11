@@ -14,6 +14,13 @@
 	# bash remove.sh
 
 ###############################################
+     Como remover um usuário ADMINISTRADOR
+###############################################
+1. Esteja logado como ROOT.
+2. Execute
+	# hardtest -d
+
+###############################################
     Encontrou algum problema? - Contate-nos
 ###############################################
 Ariel Paixao <arielpaixao10@gmail.com>

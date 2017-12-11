@@ -10,7 +10,7 @@ urldecode(){
 }
 
 X=$(echo $X | urldecode)
-
+X=$(echo $X | tr '+' ' ')
 checkdecadastro(){
 
 	cat ./usuario.txt | grep "^$login:" &>/dev/null

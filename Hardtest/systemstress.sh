@@ -3,8 +3,8 @@ DIRET="/usr/share/Hardtest/program"
 DIALOG="--backtitle "Hardtest" --ok-label "Selecionar" --exit-label "Sair" --cancel-label "Cancelar""
 USERDIRET="/usr/lib/cgi-bin"
 chamada(){
-SENHA=$(grep ^$USERU: "/var/www/html/cgi-bin/usuario.txt" | cut -d":" -f2)
-SENHAB=$(grep -R ^$USERU: $DIRET/.DATA/.usuario*.txt | cut -d":" -f2)
+SENHA=$(grep "^$USERU:" "/var/www/html/cgi-bin/usuario.txt" | cut -d":" -f2)
+SENHAB=$(grep -R "^$USERU:" $DIRET/.DATA/.usuario*.txt | cut -d":" -f2)
 }
 
 erroremove(){ echo; read -s -p "Ocorreu um erro, tente novamente." ; }
@@ -46,7 +46,7 @@ removeuser(){
   DELETESENHA=$(echo $DELETESENHA | sha256sum | cut -d" " -f1)
   SENHACERTA=$(grep ^$DELETEUSER: $USERDIRET/usuario.txt | cut -d":" -f2)
   
-  [[ "grep ^$DELETEUSER: $USERDIRET/usuario.txt" ]] && [[ $SENHACERTA == $DELETESENHA ]] && removeu || erroremove && removeuser 
+  [[ $(grep "^$DELETEUSER:" $USERDIRET/usuario.txt) ]] && [[ $SENHACERTA == $DELETESENHA ]] && removeu || erroremove && removeuser 
 }
 
 instalacao(){
@@ -103,16 +103,16 @@ logando(){
 				
 				PASSWORD=$(echo $PASSWORD | sha256sum | cut -d" " -f1)
 				
-				[[ -z $USERU ]] && logando
+				[[ -z "$USERU" ]] && logando
 				[[ -z $PASSWORD ]] && logando
 				
 				chamada
 				
 				NUMERO=$(($NUMERO+1))
 				
-				[[ "grep ^$USERU: /var/www/html/cgi-bin/usuario.txt" ]] && [[ $SENHA == $PASSWORD ]] && X="admin" && break 3
+				[[ $(grep "^$USERU:" /var/www/html/cgi-bin/usuario.txt) ]] && [[ $SENHA == $PASSWORD ]] && X="admin" && break 3
 
-				[[ "grep ^$USERU: $DIRET/.DATA/.usuario.txt" ]] && [[ $SENHAB == $PASSWORD ]] && X="dependente" && break 3 || erro && logando
+				[[ $(grep "^$USERU:" $DIRET/.DATA/.usuario.txt) ]] && [[ $SENHAB == $PASSWORD ]] && X="dependente" && break 3 || erro && logando
 
 		done
 
@@ -121,14 +121,14 @@ case $X in
 		TIPOA=$(cat "/var/www/html/cgi-bin/usuario.txt" | grep "^$USERU:" | cut -d":" -f3)
 		touch /tmp/tipo
 		echo "tipo:$TIPOA" > "/tmp/tipo"
-		echo "user:$USERU" >> "/tmp/tipo"
+		echo "user:"$USERU"" >> "/tmp/tipo"
 		source "$DIRET/.menu.sh" ;;
 
 	"dependente")
-		TIPOB=$(grep -R ^$USERU: $DIRET/.DATA/.usuario*.txt | cut -d":" -f3)
+		TIPOB=$(grep -R "^$USERU:" $DIRET/.DATA/.usuario*.txt | cut -d":" -f3)
 		touch /tmp/tipo
 		echo "tipo:$TIPOB" > "/tmp/tipo"
-		echo "user:$USERU" >> "/tmp/tipo"
+		echo "user:"$USERU"" >> "/tmp/tipo"
 		source "$DIRET/.menu.sh" ;;
 esac
 
