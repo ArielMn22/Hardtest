@@ -1,10 +1,12 @@
 #!/bin/bash
+
 DIRET="/usr/share/Hardtest/program"
 DIALOG="--backtitle "Hardtest" --ok-label "Selecionar" --exit-label "Sair" --cancel-label "Cancelar""
 USERDIRET="/usr/lib/cgi-bin"
+
 chamada(){
-SENHA=$(grep "^$USERU:" "/var/www/html/cgi-bin/usuario.txt" | cut -d":" -f2)
-SENHAB=$(grep -R "^$USERU:" $DIRET/.DATA/.usuario*.txt | cut -d":" -f2)
+	SENHA=$(grep "^$USERU:" "/var/www/html/cgi-bin/usuario.txt" | cut -d":" -f2)
+	SENHAB=$(grep -R "^$USERU:" $DIRET/.DATA/.usuario*.txt | cut -d":" -f2)
 }
 
 erroremove(){ echo; read -s -p "Ocorreu um erro, tente novamente." ; }
@@ -112,9 +114,12 @@ logando(){
 				
 				[[ $(grep "^$USERU:" /var/www/html/cgi-bin/usuario.txt) ]] && [[ $SENHA == $PASSWORD ]] && X="admin" && break 3
 
-				[[ $(grep "^$USERU:" $DIRET/.DATA/.usuario.txt) ]] && [[ $SENHAB == $PASSWORD ]] && X="dependente" && break 3 || erro && logando
+				[[ $(grep "^$USERU:" $DIRET/.DATA/.usuario*.txt) ]] && [[ $SENHAB == $PASSWORD ]] && X="dependente" && break 3 || erro && logando
 
 		done
+
+# USERU=$(echo "$USERU" | sed "s/ /\\\ /g")
+
 case $X in
 	"admin")
 		TIPOA=$(cat "/var/www/html/cgi-bin/usuario.txt" | grep "^$USERU:" | cut -d":" -f3)

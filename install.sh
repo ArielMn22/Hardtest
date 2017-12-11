@@ -60,6 +60,7 @@ html(){
 	chmod -R 773 /usr/lib/cgi-bin
 	touch /var/www/html/cgi-bin/usuario.txt
 	chmod 773 /var/www/html/cgi-bin/usuario.txt
+	chown www-data:www-data /var/www/html/cgi-bin/usuario.txt
 }
 
 permissao(){ 
