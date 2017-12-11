@@ -144,8 +144,8 @@ MENU(){
 			[[ $val == 1 ]] && source $DIRET/RAM/menuprojeto.sh)
 
 	case $escolha in
-		1) MEM ;;
-		2) MEMP ;;
+		1) MEM ; MENU ;;
+		2) MEMP ; MENU ;;
 		3) . $DIRET/RAM/menuprojeto.sh ;;
 	esac
 }
