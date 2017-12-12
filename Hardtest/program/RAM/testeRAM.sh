@@ -49,28 +49,6 @@ erro(){
 
 }
 
-NUMBER=0
-
-pegando(){
-
-	TANTOMEMO=$(inputbox "Teste de Memória" "Escolha o tanto de memória que deseja testar (Em MB)\nOBS: Memória livre utilizável para o teste: $NUM2P MB")
-	TANTOVEZES=$(inputbox "Teste de Memória" "Escolha o número de vezes que o teste vai rodar")
-
-	if [[ $TANTOMEMO -gt $NUM2P ]]; then
-		erro 1
-		errando=1	
-	fi
-	
-	if [[ $TANTOVEZES == 0 ]]; then
-		erro 2
-		errando=1
-	fi	
-	
-	if [[ $errando == 1 ]]; then
-		pegando
-	fi
-}
-
 MEM(){
 
 	NUM=$(cat /proc/meminfo | grep "MemFree" | cut -d":" -f2 | cut -d"k" -f1) 
@@ -109,6 +87,7 @@ MEM(){
 	$(rm resposta9.txt) ; $(rm resposta10.txt) ; $(rm resposta11.txt) ; $(rm resposta12.txt)
 	$(rm resposta13.txt) ; $(rm resposta14.txt) ; $(rm resposta15.txt) ; $(rm resposta16.txt) 
 	$(rm resposta17.txt) ; $(rm resposta18.txt) ; $(rm respostaMEM.txt)
+	
 	dialog \
 	--title 'Final' \
 	--textbox /tmp/respostaMEM.txt \
@@ -125,20 +104,37 @@ MEM(){
 
 }
 
+NUMERO=0
+
 MEMP(){
-	
+NUMERO=$(($NUMERO+1))	
+
 	NUMP=$(cat /proc/meminfo | grep "MemFree" | cut -d":" -f2 | cut -d"k" -f1)
 	NUM2P=$(( $NUMP / 1000 ))
-
-	pegando
 	
+	[[ $NUMERO -ge 3 ]] && msg "1. Você não pode colocar um número maior que $NUM2P MB.\n\n2. Você não pode executar o teste "0" vezes."
+	
+		TANTOMEMO=$(dialog --stdout $DIALOG --title "Teste de Memória" --inputbox "Escolha o tanto de memória que deseja testar (Em MB)\nOBS: Memória livre utilizável para o teste: $NUM2P MB" 0 0)
+								val=$?
+								[[ $val == 255 ]] && exit 0
+								[[ $val == 1 ]] && MENU
+		
+		TANTOVEZES=$(dialog --stdout $DIALOG --title "Teste de Memória" --inputbox "Insira quantas vezes deseja que o teste seja executado:" 0 0)
+								val=$?
+						  	[[ $val == 255 ]] && exit 0
+								[[ $val == 1 ]] && MENU
+
+	[[ $TANTOMEMO -gt 2000 ]] && MEMP
+
+	[[ $TANTOVEZES -eq 0 ]] && MEMP
+
 	if [[ $TANTOMEMO -ge "2000" ]] ; then
 		aguardando "Teste iniciado isso pode levar um bom tempo..."
 	elif [[ $TANTOMEMO -lt "2000"  ]] ; then
 		aguardando "Teste iniciado isso pode demorar um pouco..."
 	fi
 
-	memtester $TANTOMEMO $TANTOVEZES > respostaMEMP.txt  
+	memtester $TANTOMEMO $TANTOVEZES > respostaMEMP.txt
 	ESTADO=$?
 $(cat respostaMEMP.txt | sed 's/Stuck Address   /Endereço Escolhido/g' > resposta1.txt)    
 $(cat resposta1.txt | sed 's/Random Value   /Valor Randomico  /g' > resposta2.txt)
@@ -169,16 +165,19 @@ dialog \
 --title 'Final' \
 --textbox /tmp/respostaMEMP.txt \
 45 80
-
-	case $ESTADO in
-		0) msg "Modulo de memória OK" ; msg "para vizualizar o ultimo relatório criado execute cat /tmp/respostaMEMP.txt" ;;
-		x01) msg "Erro durante alocação ou fechamento da memória." ;;
-		x02) msg "Erro durante o teste: Stuck Address" ;;
-		x04) msg "Erro durante teste inespecífico" ;;
-		*) msg "Modulo de memoria com erro desconhecido." ;;
-	esac
+	
+	NUMERO=0
 
 	echo "[$(date)] Menu RAM teste de memória finalizado" >> "$LOG/hardtest$USERU.log"
+
+	case $ESTADO in
+		0) msg "Modulo de memória OK" ; msg "para vizualizar o ultimo relatório criado execute cat /tmp/respostaMEMP.txt" ; MENU ;;
+		x01) msg "Erro durante alocação ou fechamento da memória." ; MENU ;;
+		x02) msg "Erro durante o teste: Stuck Address" ; MENU ;;
+		x04) msg "Erro durante teste inespecífico" ; MENU ;;
+		*) msg "Modulo de memoria com erro desconhecido." ; MENU ;;
+	esac
+
 
 }
 
@@ -201,6 +200,7 @@ MENU(){
 		1) MEM ; MENU ;;
 		2) MEMP ; MENU ;;
 		3) . $DIRET/RAM/menuprojeto.sh ;;
+		*) exit 0 ;;
 	esac
 }
 MENU
