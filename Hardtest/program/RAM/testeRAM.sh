@@ -56,7 +56,7 @@ pegando(){
 	TANTOMEMO=$(inputbox "Teste de Memória" "Escolha o tanto de memória que deseja testar (Em MB)\nOBS: Memória livre utilizável para o teste: $NUM2P MB")
 	TANTOVEZES=$(inputbox "Teste de Memória" "Escolha o número de vezes que o teste vai rodar")
 
-	if [[ $TANTOMEMO -gt $NUM2 ]]; then
+	if [[ $TANTOMEMO -gt $NUM2P ]]; then
 		erro 1
 		errando=1	
 	fi
@@ -66,7 +66,7 @@ pegando(){
 		errando=1
 	fi	
 	
-	if [[ $errando == 1 ]];then
+	if [[ $errando == 1 ]]; then
 		pegando
 	fi
 }
