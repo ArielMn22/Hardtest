@@ -97,3 +97,12 @@ div.item {
 			margin-top:-50px;
 			margin-left:-50px;
 }
+#criadores {}
+#criadores p {
+	position: center;
+	text-align: left;
+	left: 50%;
+	color: black;
+	font: Arial 12px;
+
+}
