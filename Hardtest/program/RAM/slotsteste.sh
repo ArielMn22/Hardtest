@@ -11,14 +11,14 @@ echo "[$(date)] Menu HD teste slots iniciado" >> "$LOG/hardtest$USERU.log"
 pulalinha(){ echo ; }
 		
 		BANKS=$(dmidecode -t memory | grep "Bank" | cut -d ":" -f2)
-			BANK0=$(echo $BANKS | cut -d" " -f1) ; [[ -z $BANK0 ]] && BANK0="(Not Found)"
-			BANK1=$(echo $BANKS | cut -d" " -f2) ; [[ -z $BANK1 ]] && BANK1="(Not Found)"
-			BANK2=$(echo $BANKS | cut -d" " -f3) ; [[ -z $BANK2 ]] && BANK2="(Not Found)"
-			BANK3=$(echo $BANKS | cut -d" " -f4) ; [[ -z $BANK3 ]] && BANK3="(Not Found)"
-			BANK4=$(echo $BANKS | cut -d" " -f5) ; [[ -z $BANK4 ]] && BANK4="(Not Found)"
-			BANK5=$(echo $BANKS | cut -d" " -f6) ; [[ -z $BANK5 ]] && BANK5="(Not Found)"
-			BANK6=$(echo $BANKS | cut -d" " -f7) ; [[ -z $BANK6 ]] && BANK6="(Not Found)"
-			BANK7=$(echo $BANKS | cut -d" " -f8) ; [[ -z $BANK7 ]] && BANK7="(Not Found)"
+			BANK0=$(echo $BANKS | cut -d" " -f1-2) ; [[ -z $BANK0 ]] && BANK0="(Not Found)"
+			BANK1=$(echo $BANKS | cut -d" " -f3-4) ; [[ -z $BANK1 ]] && BANK1="(Not Found)"
+			BANK2=$(echo $BANKS | cut -d" " -f5-6) ; [[ -z $BANK2 ]] && BANK2="(Not Found)"
+			BANK3=$(echo $BANKS | cut -d" " -f7-8) ; [[ -z $BANK3 ]] && BANK3="(Not Found)"
+			BANK4=$(echo $BANKS | cut -d" " -f9-10) ; [[ -z $BANK4 ]] && BANK4="(Not Found)"
+			BANK5=$(echo $BANKS | cut -d" " -f11-12) ; [[ -z $BANK5 ]] && BANK5="(Not Found)"
+			BANK6=$(echo $BANKS | cut -d" " -f13-14) ; [[ -z $BANK6 ]] && BANK6="(Not Found)"
+			BANK7=$(echo $BANKS | cut -d" " -f15-16) ; [[ -z $BANK7 ]] && BANK7="(Not Found)"
 
 		SPEEDS=$(dmidecode -t memory | grep "^.Speed" | cut -d":" -f2 | cut -d"M" -f1)
 			SPEED0=$(echo $SPEEDS | cut -d" " -f1) ; [[ -z $SPEED0 ]] && SPEED0="(Not Found)"
