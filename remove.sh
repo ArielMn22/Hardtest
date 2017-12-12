@@ -5,7 +5,7 @@ while : ; do
 
 done
 DIRET="/usr/lib/cgi-bin"
-programas="dialog stress-ng speedtest-cli dmidecode sysbench sendemail hdparm apache2 htop lm-sensors"
+programas="dialog stress-ng speedtest-cli dmidecode sysbench sendemail hdparm apache2 htop lm-sensors memtester"
 html="/var/www/html"
 html2="cgi-bin css download.html index.html suporte.html cadastro.html criacao.html download imagens sobre.html"
 
