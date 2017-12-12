@@ -48,11 +48,15 @@ memoriatotal=$(echo $(sudo dmidecode -t memory | grep "MB" | grep "Size" | cut -
 memoriatotal=$(($memoriatotal)) # Em MB.
 memoriatotalGB=$(($memoriatotal/1000))
 
+NUM=$(cat /proc/meminfo | grep "MemFree" | cut -d":" -f2 | cut -d"k" -f1) 
+NUM2=$(( $NUM / 1000 ))
+
 texto(){ 
 echo "Slots de memoria: $DEV"
 echo "Capacidade maxima de RAM: $MAXRAM GB"
 echo "O padrão de memoria da sua maquina é: $DDR"
 echo "Total de memória da máquina: $memoriatotal MB / $memoriatotalGB GB"
+echo "Memória RAM livre: $NUM2 MB"
 pulalinha
 echo "Banco $BANK0:"
 echo "$SPEED0 MHz"
@@ -68,8 +72,7 @@ echo "A quantidade de memoria é $SIZE2 MB"
 pulalinha
 echo "Banco $BANK3:"
 echo "$SPEED3 MHz"
-echo "A quantidade de memoria é $SIZE3 MB
-"
+echo "A quantidade de memoria é $SIZE3 MB"
 pulalinha
 echo "Banco $BANK4:"
 echo "$SPEED4 MHz"
@@ -77,8 +80,7 @@ echo "A quantidade de memoria é $SIZE4 MB"
 pulalinha
 echo "Banco $BANK5:"
 echo "$SPEED5 MHz"
-echo "A quantidade de memoria é $SIZE5 MB
-"
+echo "A quantidade de memoria é $SIZE5 MB"
 pulalinha
 echo "Banco $BANK6:"
 echo "$SPEED6 MHz"
