@@ -1,12 +1,37 @@
-<html>
+<html lang="pt-br">
 	<head>
-	<title>Memória RAM</title>
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<meta charset="utf-8">
+		<title>Teste de CPU</title>
+		
 	</head>
 	<body>
-	<form action="cpu.cgi" method="post">
-		Qual teste deseja realizar?<br>
-  	<!-- <input type="radio" name="tipo" value="sysbench"> Teste de processamento <br> -->
-  	<input type="radio" name="tipo" value="especificacoes"> Especificações<br>
-		<input type="submit" value="Executar">
-	</form>
-	</body>
+		<div id="menu">
+			<nav>
+      	<ul>
+    <li><a href="index.html">Início</a></li>
+    <li><a href="download.html">Download</a></li>
+    <li><a href="sobre.html">Sobre nós </a></li>
+    <li><a href="suporte.html">Contato</a></li>
+    <li><a href="testeonline.html">Teste Online</a></li>
+      </ul>
+     		</nav>
+    	</div>
+    	<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+</header> 
+  <body>
+  <form action="cgi-bin/cpu.cgi" method="post" id="cpu">
+    Qual teste deseja realizar?<br>
+    <!-- <input type="radio" name="tipo" value="sysbench"> Teste de processamento <br> -->
+    <input type="radio" name="tipo" value="especificacoes"> Especificações<br>
+    <input type="submit" value="Executar">
+  </form>
+  <style type="text/css">
+  #cpu {text-align: center;
+          font-size: 26px;
+          margin-top:50px;
+          margin-left:-50px;
+          top:110%;
+  </style>
+</body>
+</html>
