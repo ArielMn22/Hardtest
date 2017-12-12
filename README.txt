@@ -13,6 +13,14 @@
 2. Execute
 	# bash remove.sh
 
+
+###############################################
+          Como cadastrar um usuário
+###############################################
+1. Acesse o seu endereço IP no seu navegador de
+internet.
+
+
 ###############################################
      Como remover um usuário ADMINISTRADOR
 ###############################################
@@ -20,9 +28,20 @@
 2. Execute
 	# hardtest -d
 
+
+###############################################
+               Observações:
+###############################################
+ - Se você executar os testes em um ambiente
+ virtual, vários testes podem no funcionar
+ corretamente.
+
+
 ###############################################
     Encontrou algum problema? - Contate-nos
 ###############################################
 Ariel Paixao <arielpaixao10@gmail.com>
 Nhat Long <nlong0920@gmail.com>
-
+Kamila Freitas <freitaskamila43@gmail.com>
+Lucas Venâncio <lucas209.coutinho@gmail.com>
+Arthur Chagas <arthurchgs@gmail.com>
