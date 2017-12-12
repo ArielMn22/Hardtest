@@ -44,6 +44,14 @@ internet.
  dentro do diretório Documentação, diretório
 este que está no mesmo local desse README.txt.
 
+- Documentação: Gerenciamento do programa (passo 
+a passo de como executar o programa).
+
+- Documentação sobre o programa  (Objetivo,
+Missão, Visão e Valores).
+
+- Documentação: Perguntas & Respostas.
+
 
 ###############################################
     Encontrou algum problema? - Contate-nos
