@@ -33,8 +33,16 @@ internet.
                Observações:
 ###############################################
  - Se você executar os testes em um ambiente
- virtual, vários testes podem no funcionar
+ virtual, vários testes podem não funcionar
  corretamente.
+
+
+###############################################
+                 Documentação
+###############################################
+ - A documentação do programa se encontra
+ dentro do diretório Documentação, diretório
+este que está no mesmo local desse README.txt.
 
 
 ###############################################
