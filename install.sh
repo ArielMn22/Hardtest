@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROGRAMAS="dialog stress-ng speedtest-cli dmidecode sysbench sendemail hdparm apache2 htop lm-sensors"
+PROGRAMAS="dialog stress-ng speedtest-cli dmidecode sysbench sendemail hdparm apache2 htop lm-sensors memtester"
 DIRET="/usr/share/Hardtest/program/"
 LOG="/var/log/Hardtest/sendemail"
 
