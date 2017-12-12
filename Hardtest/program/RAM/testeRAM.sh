@@ -53,23 +53,22 @@ NUMBER=0
 
 pegando(){
 
-	while : ; do
-		while [[ $NUMBER -ge 2 ]] ; do
-			erro 1
-			erro 2
-			NUMBER=0
-		done	
-			
-			TANTOMEMO=$(inputbox "Teste de Memória" "Escolha o tanto de memória que deseja testar (Em MB)\nOBS: Memória livre utilizável para o teste: $NUM2P MB")
-			TANTOVEZES=$(inputbox "Teste de Memória" "Escolha o númeo de vezes que o teste vai rodar (Vazio = Infinitamente)")
-			
-			NUMBER=$(($NUMBER+1))
-			
-			[[ $TANTOMEMO -gt $NUM2P ]] && pegando || break 1
-			[[ $TANTOVEZES == 0 ]] && pegando || break 1
+	TANTOMEMO=$(inputbox "Teste de Memória" "Escolha o tanto de memória que deseja testar (Em MB)\nOBS: Memória livre utilizável para o teste: $NUM2P MB")
+	TANTOVEZES=$(inputbox "Teste de Memória" "Escolha o número de vezes que o teste vai rodar")
 
-	done
-
+	if [[ $TANTOMEMO -gt $NUM2 ]]; then
+		erro 1
+		errando=1	
+	fi
+	
+	if [[ $TANTOVEZES == 0 ]]; then
+		erro 2
+		errando=1
+	fi	
+	
+	if [[ $errando == 1 ]];then
+		pegando
+	fi
 }
 
 MEM(){
@@ -83,9 +82,9 @@ MEM(){
 			aguardando "Teste iniciado isso pode demorar um pouco..."
 	fi
 
-	memtester $NUM2 1 > resposta.txt
+	memtester $NUM2 1 > respostaMEM.txt
   ESTADO=$?
-	$(cat resposta.txt | sed 's/Stuck Address   /Endereço Escolhido/g' > resposta1.txt)    
+	$(cat respostaMEM.txt | sed 's/Stuck Address   /Endereço Escolhido/g' > resposta1.txt)    
 	$(cat resposta1.txt | sed 's/Random Value   /Valor Randomico  /g' > resposta2.txt)
 	$(cat resposta2.txt | sed 's/Compare XOR/Compare XOR  /g' > resposta3.txt)  
 	$(cat resposta3.txt | sed 's/Compare SUB/Compare SUB  /g' > resposta4.txt)
@@ -103,19 +102,21 @@ MEM(){
 	$(cat resposta15.txt | sed 's/Walking Zeroes      /Procedimento de Zeros /g' > resposta16.txt)
 	$(cat resposta16.txt | sed 's/8-bit Writes    /Escrita Em 8 Bits /g' > resposta17.txt)
 	$(cat resposta17.txt | sed 's/16-bit Writes   /Escrita em 16 Bits/g' > resposta18.txt)
-	$(cat resposta18.txt > /tmp/respostaP.txt)
+	$(cat resposta18.txt > /tmp/respostaMEM.txt)
+	
 	$(rm resposta1.txt) ; $(rm resposta2.txt) ; $(rm resposta3.txt) ; $(rm resposta4.txt)
 	$(rm resposta5.txt) ; $(rm resposta6.txt) ; $(rm resposta7.txt) ; $(rm resposta8.txt) 
 	$(rm resposta9.txt) ; $(rm resposta10.txt) ; $(rm resposta11.txt) ; $(rm resposta12.txt)
 	$(rm resposta13.txt) ; $(rm resposta14.txt) ; $(rm resposta15.txt) ; $(rm resposta16.txt) 
-	$(rm resposta17.txt) ; $(rm resposta18.txt) ; $(rm resposta.txt) 
+	$(rm resposta17.txt) ; $(rm resposta18.txt) ; $(rm respostaMEM.txt)
 	dialog \
 	--title 'Final' \
-	--textbox /tmp/respostaP.txt \
+	--textbox /tmp/respostaMEM.txt \
 	45 80
 
 	if [[ $ESTADO == "0" ]] ; then 
 		msg "Modulo de memória OK" 
+                msg "para vizualizar o ultimo relatório criado execute cat /tmp/respostaMEM.txt" 
 	else 
 		msg "Modulo de memoria com erro"
 	fi
@@ -127,7 +128,7 @@ MEM(){
 MEMP(){
 	
 	NUMP=$(cat /proc/meminfo | grep "MemFree" | cut -d":" -f2 | cut -d"k" -f1)
-	NUM2P=$(( $NUMP / 1000 - 200 ))
+	NUM2P=$(( $NUMP / 1000 ))
 
 	pegando
 	
@@ -137,9 +138,9 @@ MEMP(){
 		aguardando "Teste iniciado isso pode demorar um pouco..."
 	fi
 
-	memtester $TANTOMEMO $TANTOVEZES > resposta.txt  
+	memtester $TANTOMEMO $TANTOVEZES > respostaMEMP.txt  
 	ESTADO=$?
-$(cat resposta.txt | sed 's/Stuck Address   /Endereço Escolhido/g' > resposta1.txt)    
+$(cat respostaMEMP.txt | sed 's/Stuck Address   /Endereço Escolhido/g' > resposta1.txt)    
 $(cat resposta1.txt | sed 's/Random Value   /Valor Randomico  /g' > resposta2.txt)
 $(cat resposta2.txt | sed 's/Compare XOR/Compare XOR  /g' > resposta3.txt)  
 $(cat resposta3.txt | sed 's/Compare SUB/Compare SUB  /g' > resposta4.txt)
@@ -157,19 +158,20 @@ $(cat resposta14.txt | sed 's/Walking Ones      /Comportamento de Uns/g' > respo
 $(cat resposta15.txt | sed 's/Walking Zeroes      /Procedimento de Zeros /g' > resposta16.txt)
 $(cat resposta16.txt | sed 's/8-bit Writes    /Escrita Em 8 Bits /g' > resposta17.txt)
 $(cat resposta17.txt | sed 's/16-bit Writes   /Escrita em 16 Bits/g' > resposta18.txt)
-$(cat resposta18.txt > /tmp/respostaP.txt)
+$(cat resposta18.txt > /tmp/respostaMEMP.txt)
+
 $(rm resposta1.txt) ; $(rm resposta2.txt) ; $(rm resposta3.txt) ; $(rm resposta4.txt)
 $(rm resposta5.txt) ; $(rm resposta6.txt) ; $(rm resposta7.txt) ; $(rm resposta8.txt) 
 $(rm resposta9.txt) ; $(rm resposta10.txt) ; $(rm resposta11.txt) ; $(rm resposta12.txt)
 $(rm resposta13.txt) ; $(rm resposta14.txt) ; $(rm resposta15.txt) ; $(rm resposta16.txt) 
-$(rm resposta17.txt) ; $(rm resposta18.txt) ; $(rm resposta.txt) 
+$(rm resposta17.txt) ; $(rm resposta18.txt) ; $(rm respostaMEMP.txt) 
 dialog \
 --title 'Final' \
---textbox /tmp/respostaP.txt \
+--textbox /tmp/respostaMEMP.txt \
 45 80
 
 	case $ESTADO in
-		0) msg "Modulo de memória OK" ;;
+		0) msg "Modulo de memória OK" ; msg "para vizualizar o ultimo relatório criado execute cat /tmp/respostaMEMP.txt" ;;
 		x01) msg "Erro durante alocação ou fechamento da memória." ;;
 		x02) msg "Erro durante o teste: Stuck Address" ;;
 		x04) msg "Erro durante teste inespecífico" ;;
