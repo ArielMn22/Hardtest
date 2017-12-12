@@ -44,11 +44,8 @@ senhadif(){
 	echo "</script>"
 }
 
-nome=$(echo $X | cut -d"&" -f1 | cut -d"=" -f2)
-email=$(echo $X | cut -d"&" -f2 | cut -d"=" -f2)
-estado=$(echo $X | cut -d"&" -f3 | cut -d"=" -f2)
-login=$(echo $X | cut -d"&" -f4 | cut -d"=" -f2)
-senhaa=$(echo $X | cut -d"&" -f5 | cut -d"=" -f2)
-senhab=$(echo $X | cut -d"&" -f6 | cut -d"=" -f2)
+login=$(echo $X | cut -d"&" -f1 | cut -d"=" -f2)
+senhaa=$(echo $X | cut -d"&" -f2 | cut -d"=" -f2)
+senhab=$(echo $X | cut -d"&" -f3 | cut -d"=" -f2)
 
 [[ $senhaa == $senhab ]] && cadastro || senhadif
