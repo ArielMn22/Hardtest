@@ -17,7 +17,7 @@ ESCOLHA=$(dialog						\
 			"Gerenciamento" 'Gerenciamento de usuários do programa'\
 			"Sair" 'Sai do programa'
 	VAL=$?
-	[[ $VAL == 1 ]] && exit 0
+	[[ $VAL == 1 ]] && exit 2 
 	[[ $VAL == 255 ]] && exit 0
 
 )
