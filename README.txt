@@ -13,7 +13,10 @@
 2. Execute
 	# bash remove.sh
 
-
+*OBS: Para reinstalar o programa execute:
+	# bash reinstall.sh
+	
+	
 ###############################################
           Como cadastrar um usuário
 ###############################################
