@@ -38,6 +38,8 @@ internet.
  - Se você executar os testes em um ambiente
  virtual, vários testes podem não funcionar
  corretamente.
+ - Encontre os arquivos .log no diretório:
+ "/var/log/Hardtest"
 
 
 ###############################################
