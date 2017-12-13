@@ -12,15 +12,9 @@ chamada(){
 erroremove(){ echo; read -s -p "Ocorreu um erro, tente novamente." ; }
 
 removeu(){
-  
-  cat $USERDIRET/usuario.txt | sed "/^$DELETEUSER:/d" > $USERDIRET/novo.txt
-  
-  rm -rf $USERDIRET/usuario.txt
-  mv $USERDIRET/novo.txt $USERDIRET/usuario.txt
-  
-  chown www-data:www-data $USERDIRET/usuario.txt
-  chmod 773 $USERDIRET/usuario.txt
 
+	> $USERDIRET/usuario.txt
+	
   if [[ $? == 0 ]]; then
     echo ;echo "Usuário "$DELETEUSER" removido com sucesso!"
     exit 0
