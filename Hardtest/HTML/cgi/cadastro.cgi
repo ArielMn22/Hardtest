@@ -26,7 +26,7 @@ checkdecadastro(){
 		exit 0
 	fi
 
-	if [[ $? == 0 ]] ; then
+	if [[ $var == 0 ]] ; then
 		echo 'alert("Um usuário ADMIN já foi cadastrado, para cadastrar outro usuário, primeiro remove o usuário existente e depois cadastre outro.");'
 		echo 'window.location="../cadastro.html";'
 	echo "</script>"
