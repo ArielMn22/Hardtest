@@ -85,10 +85,10 @@ case $ESCOLHA in
 esac
 }
 
-source $DIRET/.checando.sh
+
 
 case $TIPO in
-	"ADMIN") ADMIN ;;
-	"TEC") TEC ;;
-	"COMUM") COMUM ;;
+	"ADMIN") source $DIRET/.checando.sh ; ADMIN ;;
+	"TEC") source $DIRET/.checando.sh ; TEC ;;
+	"COMUM") source $DIRET/.checando.sh ; COMUM ;;
 esac
