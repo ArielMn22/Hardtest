@@ -1,6 +1,6 @@
 #!/bin/bash
 
-var2=$(lscpu | grep "Hypervisor vendor" | cut -d":" -f2  )
+var2=$(lscpu | grep "Hypervisor vendor" | cut -d":" -f2 | sed 's/ //g' )
 var1="KVM"
 
 [[ $var2 == $var1 ]]
@@ -14,3 +14,4 @@ if [[ $verificacao == 0 ]] ; then
 else
   echo "continuando"
 fi
+echo $verificacao
