@@ -1,4 +1,5 @@
 #!/bin/bash
+
 TIPO=$(cat /tmp/tipo | grep "tipo" | cut -d":" -f2)
 DIRET="/usr/share/Hardtest/program"
 DIALOG="--backtitle "Hardtest" --ok-label "Selecionar" --exit-label "Sair" --cancel-label "Cancelar""
@@ -83,6 +84,8 @@ case $ESCOLHA in
 	"Sair") clear ; echo "Até logo!" ; echo ; exit 0 ;;
 esac
 }
+
+source $DIRET/.checando.sh
 
 case $TIPO in
 	"ADMIN") ADMIN ;;
