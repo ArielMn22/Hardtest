@@ -1,9 +1,9 @@
 #!/bin/bash
 
-var2=$(lscpu | grep "Hypervisor vendor" | cut -d":" -f2 &>/dev/null)
-var1="KVM"
+var2=$(lscpu | grep "Hypervisor vendor" | cut -d":" -f2 & )
 
-[[ $var2 == $var1 ]]
+
+#[[ $var2 == $var1 ]]
 
 verificacao=$?
 
@@ -13,3 +13,6 @@ if [[ $verificacao == 0 ]] ; then
   exit 0
 
 fi
+echo $verificacao
+echo $var1
+echo $var2
