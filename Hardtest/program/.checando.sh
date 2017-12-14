@@ -10,7 +10,7 @@ verificacao=$?
 if [[ $verificacao == 0 ]] ; then
 
   dialog --stdout --title "OBS" --msgbox "Verificamos que você está executando nosso software em um ambiente virtual.\nPor conta disso esse teste não funcionará.\n\nAgradecemos a compreensão." 80 80
-  exit 0
+
 else
   echo "continuando"
 fi
