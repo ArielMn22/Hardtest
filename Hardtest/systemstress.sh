@@ -28,7 +28,7 @@ removeuser(){
   clear
   echo "Estes são os usuários ADMINISTRADORES cadastrados no programa:"
   echo
-	cat $USERDIRET/usuario.txt
+	cat $USERDIRET/usuario.txt | sed "/Cadastrado/d"
 	echo
   
   dados(){
