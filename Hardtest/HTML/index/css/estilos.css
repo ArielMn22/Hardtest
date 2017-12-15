@@ -17,8 +17,14 @@ div#interface {
 	}
 	p {
 		text-align: center;
-		text-indent: 30px;
 }
+
+#pagesuporte{
+	text-align: left;
+	margin-top: 30px;
+	margin-left: 100px;
+}
+
 h1 {
 	color: black;
 	text-align: center;
@@ -32,6 +38,10 @@ h5 {
 	font-family: "georgia", sans-serif;
 	font-size: 24px;
    }
+h4 {
+	position: relative;
+	left: 40%
+	}
 #menu ul {
 	margin: -10;
 	background-color: black;
@@ -79,7 +89,7 @@ div.item {
 	color: #c61aff;
 	font: Arial 12px;
 	position: relative;
-	left: 350;
+	left: 40%;
 }
 .bgimg {
 	width: 110%;
@@ -93,7 +103,7 @@ div.item {
 			height:700px;
 			position:absolute;
 			top:80%;
-			left:20%;
+			left:29%;
 			margin-top:-50px;
 			margin-left:-50px;
 }
