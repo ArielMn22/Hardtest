@@ -88,7 +88,7 @@ esac
 
 
 case $TIPO in
-	"ADMIN") source $DIRET/.checando.sh ; ADMIN ;;
-	"TEC") source $DIRET/.checando.sh ; TEC ;;
-	"COMUM") source $DIRET/.checando.sh ; COMUM ;;
+	"ADMIN") ADMIN ;;
+	"TEC") TEC ;;
+	"COMUM") COMUM ;;
 esac

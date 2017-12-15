@@ -138,6 +138,8 @@ while : ; do
 
 done
 
+source $DIRET/.checando.sh
+
 [[ $1 == "-d" ]] && removeuser
 
 checkdesenha
