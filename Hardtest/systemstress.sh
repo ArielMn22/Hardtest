@@ -77,6 +77,8 @@ coloctipo(){
 NUMERO=0
 
 logando(){
+		source $DIRET/.checando.sh
+
 		while : ; do
 			while [[ $NUMERO -gt 2 ]] ; do
 				
@@ -138,7 +140,6 @@ while : ; do
 
 done
 
-source $DIRET/.checando.sh
 
 [[ $1 == "-d" ]] && removeuser
 
