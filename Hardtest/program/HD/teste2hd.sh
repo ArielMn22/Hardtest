@@ -58,15 +58,15 @@ teaste
 
 stresspersonalizado(){
 hogs=$(dialog --stdout $DIALOG --title "Stress HD" --inputbox "Insira o número de stressors que deseja utilizar no stress:" 0 0
+)
 VAL=$?
 [[ $VAL == 1 ]] && teaste
 [[ $VAL == 255 ]] && exit 0
-)
 time=$(dialog --stdout $DIALOG --title "Stress HD" --inputbox "Insira a duração, em algarimos númericos, do stress:" 0 0
+)
 VAL=$?
 [[ $VAL == 1 ]] && teaste
 [[ $VAL == 255 ]] && exit 0
-)
 dialog --stdout $DIALOG --title "Stress HD" --infobox "O stress será executado por $time segundos e depois será encerrado." 0 0
 VAL=$?
 [[ $VAL == 1 ]] && teaste

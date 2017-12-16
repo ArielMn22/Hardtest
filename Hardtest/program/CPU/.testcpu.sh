@@ -142,16 +142,14 @@ stressdefault(){
         [[ $VAL == 1 ]] && menustressng
 }
 stresspersonalizado(){
-	stressthreads=$(dialog --stdout $DIALOG --title "Stress-ng" --inputbox "Insira o número de threads em que deseja executar o teste de stress:" 0 0
-	VAL=$?
-	[[ $VAL == 255 ]] && exit 0
-        [[ $VAL == 1 ]] && menustressng
-	)
-	tempostress=$(dialog --stdout $DIALOG --title "Stress-ng" --inputbox "Por quanto tempo o stress vai ser executado?" 0 0
-	VAL=$?
-	[[ $VAL == 255 ]] && exit 0
-        [[ $VAL == 1 ]] && menustressng
-	)
+	stressthreads=$(dialog --stdout $DIALOG --title "Stress-ng" --inputbox "Insira o número de threads em que deseja executar o teste de stress:" 0 0)
+		VAL=$?
+		[[ $VAL == 255 ]] && exit 5 
+    [[ $VAL == 1 ]] && menustressng
+	tempostress=$(dialog --stdout $DIALOG --title "Stress-ng" --inputbox "Por quanto tempo o stress vai ser executado?" 0 0)
+		VAL=$?
+		[[ $VAL == 255 ]] && exit 0
+  	[[ $VAL == 1 ]] && menustressng
 	dialog --stdout $DIALOG --title "Stress-ng" --msgbox "O stress será executado por $tempostress e depois será encerrado" 0 0
 	VAL=$?
 	[[ $VAL == 255 ]] && exit 0
