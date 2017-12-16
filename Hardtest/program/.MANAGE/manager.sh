@@ -113,10 +113,10 @@ menu(){
 		Remover\ usuário "Remove um usuário do programa"\
 		Listar\ usuários "Lista os usuários existentes"\
 		Voltar "Volta ao menu anterior"
+	)
 		VAL=$?
 		[[ $VAL == 255 ]] && exit 0
 		[[ $VAL == 0 ]] && break || . "$DIRET/.menu.sh" $TIPO
-	)
 
 	case $ACAO in
 		"Criar usuário") criar ;;
