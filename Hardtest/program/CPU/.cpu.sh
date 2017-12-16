@@ -27,7 +27,8 @@ ESCOLHA1=$(dialog               \
 	cpuinfo "Utiliza informações do cpuinfo"\
 	Voltar "Volta ao menu anterior"
 	VAL=$?
-	[[ $VAL == 255 ]] && exit 0
+	[[ $VAL == 255 ]] && exit 0 
+ [[ $VAL == 1 ]] && menu
 )
 case $ESCOLHA1 in
   "lscpu") lscpu > "$STAGE" ; textbox lscpu ; especificacoesc ;;
@@ -54,8 +55,8 @@ especificacoesb(){
 	echo -e "$MODEL\n$CACHE\n$FAMILY\n$VENDOR\n$CORES\n$ARCHITECTURE$THREADS" > "$STAGE"
 	dialog --stdout $DIALOG --title "Especificações" --msgbox "$(cat "$STAGE")" 0 0 
 	VAL=$?
-	[[ $VAL == 255 ]] && exit 0
-  [[ $VAL == 1 ]] && menu
+	[[ $VAL == 255 ]] && exit 0 
+ [[ $VAL == 1 ]] && menu
 }
 
 menu(){

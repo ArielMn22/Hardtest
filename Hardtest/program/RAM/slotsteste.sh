@@ -91,7 +91,7 @@ echo "$SPEED7 MHz"
 echo "A quantidade de memoria é $SIZE7 MB"
 }
 
-novotexto=$(texto | sed '/(Not Found)/d')
+novotexto=$( texto | sed '/(Not Found)/d')
 echo "$novotexto" > "$DIRET/RAM/.texto.txt"
 
 dialog 															\
