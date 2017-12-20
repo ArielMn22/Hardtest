@@ -26,8 +26,6 @@ msg=$(echo $msg | urldecode | tr + ' ')
 
 email=$(echo "Email do usuário: $email") #> /home/hardtest/mail.txt 2>> email.log
 msg=$(echo "Mensagem do usuário: $msg") #>> /home/hardtest/mail.txt 2>> email.log
-echo "<h5>$email</h5>"
-echo "<h5>$msg</h5>"
 
 sendemail -l $MAIL_LOG/sendemail.log          							 \
 -f "contato.hardtest@gmail.com"                              \
